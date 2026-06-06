@@ -38,10 +38,8 @@ Just add this one `<script>` tag to your HTML. No setup, no install.
 ```html
 <script src="https://cdn.jsdelivr.net/gh/popsyjs/popsy.js@main/popsy.js"></script>
 
-<script>
-  Popsy.confetti()
-  Popsy.toast('Welcome! 🎉')
-</script>
+<button onclick="Popsy.confetti()">Click me</button>
+
 ```
 
 ---
