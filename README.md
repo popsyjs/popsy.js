@@ -46,20 +46,6 @@ Just add this one `<script>` tag to your HTML. No setup, no install.
 
 ---
 
-## Usage
-
-```js
-// Confetti
-Popsy.confetti()
-Popsy.confetti({ count: 120, colors: ['#f00', '#0f0', '#00f'] })
-
-// Toast
-Popsy.toast('Saved!')
-Popsy.toast('Something went wrong', { type: 'error' })
-Popsy.toast('Did you know?',        { type: 'info' })
-Popsy.toast('Stays longer',         { duration: 6000 })
-```
-
 > 📖 For full options and examples, open the component file — all docs are written inside.
 
 ---
