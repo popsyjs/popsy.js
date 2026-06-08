@@ -41,8 +41,6 @@ Just add this one `<script>` tag to your HTML. No setup, no install.
 <button onclick="Popsy.confetti()">Click me</button>
 ```
 
----
-
 > 📖 For full options and examples, open the component file — all docs are written inside.
 
 ---
