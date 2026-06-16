@@ -36,18 +36,6 @@ Just add this one `<script>` tag to your HTML. No setup, no install.
 
 ---
 
-## Quick Example
-
-```html
-<script src="https://cdn.jsdelivr.net/gh/popsyjs/popsy.js@main/popsy.js"></script>
-
-<button onclick="Popsy.confetti()">Click me</button>
-```
-
-> 📖 For full options and examples, open the component file — all docs are written inside.
-
----
-
 ## Contributing
 
 We welcome contributions! Read [CONTRIBUTING.md](./CONTRIBUTING.md) to get started.
