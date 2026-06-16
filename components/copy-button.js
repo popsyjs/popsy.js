@@ -9,7 +9,7 @@
  *
  * ─── HOW TO USE ──────────────────────────────
  *
- *  <script src="https://cdn.jsdelivr.net/gh/popsyjs/popsy.js@main/popsy.js"></script>
+ *  <script src="https://cdn.jsdelivr.net/gh/popsyjs/popsy.js@latest/popsy.js"></script>
  *
  *  <div id="target"></div>
  *  <script>
