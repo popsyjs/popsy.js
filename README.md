@@ -40,6 +40,10 @@ Just add this one `<script>` tag to your HTML. No setup, no install.
 
 We welcome contributions! Read [CONTRIBUTING.md](./CONTRIBUTING.md) to get started.
 
+## Documentation
+
+Find the full documentation, guides, and examples at [https://popsyjs.mintlify.app/](https://popsyjs.mintlify.app/).
+
 ## License
 
 MIT — free to use in any project.
