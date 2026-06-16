@@ -203,6 +203,7 @@ Popsy.copy = function (options = {}) {
 // ── COMMAND PALETTE ───────────────────────────────────────
 
 Popsy.palette = (function () {
+  // Stub open/close so callers don't throw before init
   function noop() {}
   const api = function palette(commands, options) { init(commands, options); };
   api.open  = noop;
@@ -230,14 +231,17 @@ Popsy.palette = (function () {
     return ICONS[icon] || ICON_DEFAULT;
   }
 
+  // Tracks the current instance so re-calling Popsy.palette() tears down the old one
   let _teardown = null;
 
   function init(commands, options = {}) {
+    // Tear down any existing instance
     if (_teardown) { _teardown(); _teardown = null; }
 
     const placeholder = options.placeholder || 'Search commands...';
     const hotkey      = options.hotkey      || 'k';
 
+    // ── Inject placeholder colour once ──────────────────────────
     if (!document.getElementById('popsy-palette-style')) {
       const s = document.createElement('style');
       s.id = 'popsy-palette-style';
@@ -245,6 +249,7 @@ Popsy.palette = (function () {
       document.head.appendChild(s);
     }
 
+    // ── DOM ─────────────────────────────────────────────────────
     const overlay = document.createElement('div');
     overlay.id = 'popsy-palette-overlay';
     overlay.style.cssText = [
@@ -264,6 +269,7 @@ Popsy.palette = (function () {
       'font-family:sans-serif',
     ].join(';');
 
+    // Search row
     const searchRow = document.createElement('div');
     searchRow.style.cssText = 'display:flex;align-items:center;gap:12px;padding:16px 18px;border-bottom:1px solid #2e2e32;';
     searchRow.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2" style="flex-shrink:0"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>';
@@ -283,9 +289,11 @@ Popsy.palette = (function () {
     searchRow.appendChild(input);
     searchRow.appendChild(escBadge);
 
+    // Results list
     const list = document.createElement('div');
     list.style.cssText = 'max-height:340px;overflow-y:auto;padding:6px;';
 
+    // Footer
     const footer = document.createElement('div');
     footer.style.cssText = 'border-top:1px solid #2e2e32;padding:8px 16px;display:flex;gap:16px;align-items:center;';
     const kb = (key) => `<kbd style="background:#2a2a2e;border:1px solid #3a3a3e;border-radius:3px;padding:1px 5px;color:#555;font-size:10px;">${key}</kbd>`;
@@ -298,10 +306,12 @@ Popsy.palette = (function () {
     overlay.appendChild(modal);
     document.body.appendChild(overlay);
 
+    // ── State ────────────────────────────────────────────────────
     let isOpen    = false;
     let activeIdx = 0;
     let filtered  = [];
 
+    // ── Render ───────────────────────────────────────────────────
     function render() {
       list.innerHTML = '';
 
@@ -313,6 +323,7 @@ Popsy.palette = (function () {
         return;
       }
 
+      // Group by category
       const groups = {};
       filtered.forEach((cmd) => {
         const g = cmd.category || 'General';
@@ -350,18 +361,21 @@ Popsy.palette = (function () {
           item.appendChild(labelEl);
           item.appendChild(badge);
 
+          // Use closure copy of `i` — avoid stale activeIdx in mouseenter
           item.addEventListener('mouseenter', () => { activeIdx = i; render(); });
-          item.addEventListener('click', () => { close(); cmd.action(); });
+          item.addEventListener('click', () => { cmd.action(); close(); });
 
           list.appendChild(item);
 
           if (active) {
+            // Defer so the element is in the DOM before scrolling
             setTimeout(() => item.scrollIntoView({ block: 'nearest' }), 0);
           }
         });
       }
     }
 
+    // ── Filter ───────────────────────────────────────────────────
     function filter(q) {
       const query = q.toLowerCase().trim();
       filtered = query
@@ -374,6 +388,7 @@ Popsy.palette = (function () {
       render();
     }
 
+    // ── Open / Close ─────────────────────────────────────────────
     function open(query) {
       isOpen = true;
       overlay.style.opacity = '1';
@@ -392,6 +407,7 @@ Popsy.palette = (function () {
       input.blur();
     }
 
+    // ── Events ───────────────────────────────────────────────────
     overlay.addEventListener('click', (e) => { if (e.target === overlay) close(); });
     input.addEventListener('input', () => filter(input.value));
 
@@ -409,9 +425,11 @@ Popsy.palette = (function () {
     }
     document.addEventListener('keydown', onKeyDown);
 
+    // ── Expose on api ────────────────────────────────────────────
     api.open  = open;
     api.close = close;
 
+    // ── Teardown for future re-init ──────────────────────────────
     _teardown = () => {
       document.removeEventListener('keydown', onKeyDown);
       overlay.remove();

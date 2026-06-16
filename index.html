@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Popsy.js — Command Palette Demo</title>
+    <style>
+        body {
+            font-family: system-ui, sans-serif;
+            max-width: 640px;
+            margin: 80px auto;
+            padding: 0 20px;
+            color: #1c1c1e;
+        }
+
+        button {
+            padding: 10px 16px;
+            margin-right: 8px;
+            font-size: 14px;
+            border: 1px solid #d4d4d8;
+            background: #fff;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #f4f4f5;
+        }
+
+        kbd {
+            background: #f4f4f5;
+            border: 1px solid #d4d4d8;
+            border-radius: 4px;
+            padding: 2px 6px;
+            font-family: monospace;
+            font-size: 13px;
+        }
+    </style>
+
+    <!-- Load Popsy.js from the CDN -->
+    <script src="https://cdn.jsdelivr.net/gh/popsyjs/popsy.js@latest/popsy.js"></script>
+</head>
+
+<body>
+    <h1>Command Palette Demo</h1>
+    <p>Press <kbd>Ctrl</kbd> + <kbd>K</kbd> (or <kbd>Cmd</kbd> + <kbd>K</kbd> on Mac) to open the menu.</p>
+
+    <button onclick="Popsy.palette.open()">Open Menu</button>
+    <button onclick="Popsy.palette.open('settings')">Search "settings"</button>
+
+    <script>
+        // A custom SVG icon (used by the "Starred Items" command below)
+        const starIcon = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>';
+
+        // Register the palette once on page load
+        Popsy.palette([
+            // ── Navigation ──
+            {
+                label: 'Dashboard',
+                icon: 'home',
+                category: 'Navigate',
+                shortcut: 'G D',
+                action: () => {
+                    window.location.href = 'https://popsyjs.dev';
+                }
+            },
+            {
+                label: 'Projects',
+                icon: 'project',
+                category: 'Navigate',
+                shortcut: 'G P',
+                action: () => location.href = '/projects'
+            },
+            {
+                label: 'Profile',
+                icon: 'user',
+                category: 'Navigate',
+                action: () => location.href = '/profile'
+            },
+
+            // ── Actions ──
+            {
+                label: 'New Project',
+                icon: 'plus',
+                category: 'Actions',
+                shortcut: 'N',
+                action: () => alert('Creating a new project…')
+            },
+            {
+                label: 'Copy current URL',
+                icon: 'copy',
+                category: 'Actions',
+                action: () => {
+                    navigator.clipboard.writeText(location.href);
+                    alert('URL copied!');
+                }
+            },
+            {
+                label: 'Starred Items',
+                icon: starIcon, // custom SVG
+                category: 'Actions',
+                action: () => alert('Opening starred items…')
+            },
+
+            // ── Preferences ──
+            {
+                label: 'Toggle Dark Mode',
+                icon: 'moon',
+                category: 'Preferences',
+                action: () => document.body.classList.toggle('dark')
+            },
+            {
+                label: 'Settings',
+                icon: 'settings',
+                category: 'Preferences',
+                shortcut: 'G S',
+                action: () => location.href = '/settings'
+            },
+            {
+                label: 'Keyboard Shortcuts',
+                icon: 'keyboard',
+                category: 'Preferences',
+                action: () => alert('Showing keyboard shortcuts…')
+            },
+
+            // ── Help ──
+            {
+                label: 'Documentation',
+                icon: 'docs',
+                category: 'Help',
+                action: () => window.open('https://popsyjs.dev', '_blank')
+            },
+            {
+                label: 'Report a Bug',
+                icon: 'bug',
+                category: 'Help',
+                action: () => window.open('https://github.com/popsyjs/popsy.js/issues', '_blank')
+            },
+
+            // ── Account ──
+            {
+                label: 'Log Out',
+                icon: 'logout',
+                category: 'Account',
+                action: () => {
+                    if (confirm('Log out?')) location.href = '/logout';
+                }
+            },
+        ], {
+            placeholder: 'Type a command or search…',
+            hotkey: 'k' // Ctrl+K / Cmd+K
+        });
+    </script>
+</body>
+
+</html>
