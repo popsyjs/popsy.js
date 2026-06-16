@@ -27,12 +27,13 @@ Just add this one `<script>` tag to your HTML. No setup, no install.
 
 ## Components
 
-| Component   | Description                                   | Docs                                    |
-| ----------- | --------------------------------------------- | --------------------------------------- |
-| 🎉 Confetti | Burst of colorful confetti from screen center | [confetti.js](./components/confetti.js) |
-| 📋 Copy     | Copy-to-clipboard button                      | [copy-button.js](./components/copy-button.js) |
-| 🔔 Toast    | Notification popup — success, error, info     | [toast.js](./components/toast.js)       |
-| 💬 Tooltip  | Lightweight tooltip for any element           | [tooltip.js](./components/tooltip.js)   |
+| Component    | Description                                   | Docs                                    |
+| ------------ | --------------------------------------------- | --------------------------------------- |
+| 🎉 Confetti  | Burst of colorful confetti from screen center | [confetti.js](./components/confetti.js) |
+| 📋 Copy      | Copy-to-clipboard button                      | [copy-button.js](./components/copy-button.js) |
+| ⌨️ Palette   | Keyboard-driven command palette (Ctrl+K)      | [palette.js](./components/palette.js)   |
+| 🔔 Toast     | Notification popup — success, error, info     | [toast.js](./components/toast.js)       |
+| 💬 Tooltip   | Lightweight tooltip for any element           | [tooltip.js](./components/tooltip.js)   |
 
 ---
 
