@@ -27,12 +27,13 @@ Just add this one `<script>` tag to your HTML. No setup, no install.
 
 ## Components
 
-| Component   | Description                                   | Docs                                    |
-| ----------- | --------------------------------------------- | --------------------------------------- |
-| 🎉 Confetti | Burst of colorful confetti from screen center | [confetti.js](./components/confetti.js) |
-| 📋 Copy     | Copy-to-clipboard button                      | [copy-button.js](./components/copy-button.js) |
-| 🔔 Toast    | Notification popup — success, error, info     | [toast.js](./components/toast.js)       |
-| 💬 Tooltip  | Lightweight tooltip for any element           | [tooltip.js](./components/tooltip.js)   |
+| Component    | Description                                            | Docs                                                  |
+| ------------ | ------------------------------------------------------ | ----------------------------------------------------- |
+| 🎉 Confetti  | Burst of colorful confetti from screen center          | [confetti.js](./components/confetti.js)               |
+| 🔔 Toast     | Notification popup — success, error, info              | [toast.js](./components/toast.js)                     |
+| 📋 Copy      | Copy-to-clipboard button with presets                  | [copy-button.js](./components/copy-button.js)         |
+| 💬 Tooltip   | Lightweight hover tooltip for any element              | [tooltip.js](./components/tooltip.js)                 |
+| ⌨️ Palette   | Ctrl+K command palette with search, categories & icons | [command-palette.js](./components/command-palette.js) |
 
 ---
 
@@ -42,7 +43,7 @@ We welcome contributions! Read [CONTRIBUTING.md](./CONTRIBUTING.md) to get start
 
 ## Documentation
 
-Find the full documentation, guides, and examples at [https://popsyjs.mintlify.app/](https://popsyjs.mintlify.app/).
+Full docs, guides, and examples → [popsyjs.mintlify.app](https://popsyjs.mintlify.app/)
 
 ## License
 
