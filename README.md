@@ -9,6 +9,7 @@ Popsy.js is a lightweight JavaScript library that adds delightful animations and
 [![Stars](https://img.shields.io/github/stars/popsyjs/popsy.js?style=flat-square)](https://github.com/popsyjs/popsy.js)
 [![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)](./licence.md)
 [![CDN](https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat-square)](https://cdn.jsdelivr.net/gh/popsyjs/popsy.js@main/popsy.js)
+[![Docs](https://img.shields.io/badge/docs-online-blue?style=flat-square)](https://popsyjs.mintlify.app/)
 
 </div>
 
