@@ -227,7 +227,7 @@ Popsy.palette = (function () {
 
           // Use closure copy of `i` — avoid stale activeIdx in mouseenter
           item.addEventListener('mouseenter', () => { activeIdx = i; render(); });
-          item.addEventListener('click', () => { close(); cmd.action(); });
+          item.addEventListener('click', () => { cmd.action(); close(); });
 
           list.appendChild(item);
 
