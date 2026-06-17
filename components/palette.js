@@ -226,8 +226,8 @@ Popsy.palette = (function () {
           item.appendChild(badge);
 
           // Use closure copy of `i` — avoid stale activeIdx in mouseenter
-          item.addEventListener('mouseenter', () => { activeIdx = i; render(); });
-          item.addEventListener('click', () => { cmd.action(); close(); });
+          item.addEventListener('mouseenter', () => { if (activeIdx !== i) { activeIdx = i; render(); } });
+          item.addEventListener('mousedown', (e) => { e.preventDefault(); close(); cmd.action(); });
 
           list.appendChild(item);
 
